@@ -10,7 +10,26 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 
 /**
- * Provides helper methods to assist in polling.
+ * The HandlesPolling trait equips Laravel queued jobs with robust polling
+ * capabilities. It offers a streamlined approach to implement polling logic
+ * within jobs, allowing them to repeatedly check certain conditions or wait for
+ * specific criteria to be met before proceeding further. This trait is
+ * particularly useful for jobs that need to poll external APIs, watch for state
+ * changes, or execute tasks at certain intervals.
+ *
+ * Key Features:
+ * - Configurable polling intervals and maximum attempts to efficiently manage
+ * job execution.
+ * - Memory and execution time checks to ensure resource-efficient operation of
+ * jobs.
+ * - Extensible design requiring implementation of abstract methods for custom
+ * polling logic.
+ * - Supports delayed re-dispatching or releasing of jobs based on polling
+ * outcomes.
+ *
+ * Usage involves including this trait in Laravel job classes and implementing
+ * the required abstract methods to define the polling logic, unique job
+ * identification, and resolution criteria.
  *
  * @author      Ben Carey <bdmc@sinemacula.co.uk>
  * @copyright   2024 Sine Macula Limited.
