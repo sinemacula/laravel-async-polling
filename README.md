@@ -2,8 +2,8 @@
 
 [![Build Status](https://github.com/sinemacula/laravel-async-polling/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/sinemacula/laravel-async-polling/actions/workflows/tests.yml)
 [![StyleCI](https://github.styleci.io/repos/749035570/shield?style=flat&branch=master)](https://github.styleci.io/repos/749035570)
-[![Maintainability](https://api.codeclimate.com/v1/badges/65b4f3033f0d085ad7ff02c2/maintainability)](https://codeclimate.com/repos/65b4f3033f0d085ad7ff02c2/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/65b4f3033f0d085ad7ff02c2/test_coverage)](https://codeclimate.com/repos/65b4f3033f0d085ad7ff02c2/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a6fec0d28fcb8901ee35/maintainability)](https://codeclimate.com/repos/65b4f3033f0d085ad7ff02c2/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a6fec0d28fcb8901ee35/test_coverage)](https://codeclimate.com/repos/65b4f3033f0d085ad7ff02c2/test_coverage)
 
 This repository provides a simple polling trait, designed to extend Laravel's queued jobs with asynchronous polling
 capabilities. It's a straightforward solution for jobs that require repeated checks or waiting for specific conditions
