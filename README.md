@@ -42,109 +42,109 @@ class ExampleJob implements ShouldQueue
    polling process.
 
 ```php
-    /**
-     * Get the id to uniquely identify the polling job.
-     *
-     * @return string
-     */
-    protected function getPollingId(): string
-    {
-        // Return a unique identifier for the polling job
-        
-        // Example:
-        return $this->uniqueId();
-    }
+/**
+ * Get the id to uniquely identify the polling job.
+ *
+ * @return string
+ */
+protected function getPollingId(): string
+{
+    // Return a unique identifier for the polling job
+    
+    // Example:
+    return $this->uniqueId();
+}
 
-    /**
-     * Determine whether the polling job has resolved.
-     *
-     * @return bool
-     */
-    protected function hasPollResolved(): bool
-    {
-        // Return true if the polling job has successfully resolved
-        
-        // Example:
-        return $this->isStatusFinite($this->status);
-    }
+/**
+ * Determine whether the polling job has resolved.
+ *
+ * @return bool
+ */
+protected function hasPollResolved(): bool
+{
+    // Return true if the polling job has successfully resolved
+    
+    // Example:
+    return $this->isStatusFinite($this->status);
+}
 
-    /**
-     * Resolve the polling job to be dispatched.
-     *
-     * @return \Illuminate\Contracts\Queue\ShouldQueue
-     */
-    protected function resolvePollingJob(): ShouldQueue
-    {
-        // Resolve the job to be released back to the queue. This function will
-        // most likely just return `new static` but it is here to allow for new
-        // parameters to be passed to the next instance of the poll. This method
-        // will only be executed when job release is not supported.
-        
-        // Example:
-        return new static($this->status);
-    }
+/**
+ * Resolve the polling job to be dispatched.
+ *
+ * @return \Illuminate\Contracts\Queue\ShouldQueue
+ */
+protected function resolvePollingJob(): ShouldQueue
+{
+    // Resolve the job to be released back to the queue. This function will
+    // most likely just return `new static` but it is here to allow for new
+    // parameters to be passed to the next instance of the poll. This method
+    // will only be executed when job release is not supported.
+    
+    // Example:
+    return new static($this->status);
+}
 
-    /**
-     * Resolve the poll.
-     *
-     * @return bool
-     */
-    protected function resolvePoll(): bool;
-    {
-        // Here is where you insert the logic for the actual poll
-        
-        // Example
-        $response = SomethingCool::getStatus($this->someProperty);
+/**
+ * Resolve the poll.
+ *
+ * @return bool
+ */
+protected function resolvePoll(): bool;
+{
+    // Here is where you insert the logic for the actual poll
+    
+    // Example
+    $response = SomethingCool::getStatus($this->someProperty);
 
-        $this->someCustomMethod($response);
+    $this->someCustomMethod($response);
 
-        return $this->hasPollResolved();
-    }
+    return $this->hasPollResolved();
+}
 ```
 
 3. **Customisation Configuration**: If you would like to override certain configurations, you can do so by defining any
    of the following methods:
 
 ```php
-    /**
-     * Determine whether jobs can be released.
-     *
-     * @return bool
-     */
-    protected function canJobsBeReleased(): bool
-    {
-        return config('some.configuration', self::SUPPORTS_JOB_RELEASE);
-    }
+/**
+ * Determine whether jobs can be released.
+ *
+ * @return bool
+ */
+protected function canJobsBeReleased(): bool
+{
+    return config('some.configuration', self::SUPPORTS_JOB_RELEASE);
+}
 
-    /**
-     * Get the interval of the poll.
-     *
-     * @return int
-     */
-    protected function getInterval(): int
-    {
-        return config('some.configuration', self::DEFAULT_INTERVAL);
-    }
+/**
+ * Get the interval of the poll.
+ *
+ * @return int
+ */
+protected function getInterval(): int
+{
+    return config('some.configuration', self::DEFAULT_INTERVAL);
+}
 
-    /**
-     * Get the maximum allowed number of attempts.
-     *
-     * @return int
-     */
-    protected function getMaxAttempts(): int
-    {
-        return config('some.configuration', self::DEFAULT_MAX_ATTEMPTS);
-    }
+/**
+ * Get the maximum allowed number of attempts.
+ *
+ * @return int
+ */
+protected function getMaxAttempts(): int
+{
+    return config('some.configuration', self::DEFAULT_MAX_ATTEMPTS);
+}
 
-    /**
-     * Get the maximum lifetime of the poll.
-     *
-     * @return int
-     */
-    protected function getLifetime(): int
-    {
-        return config('some.configuration', self::DEFAULT_LIFETIME);
-    }
+/**
+ * Get the maximum lifetime of the poll.
+ *
+ * @return int
+ */
+protected function getLifetime(): int
+{
+    return config('some.configuration', self::DEFAULT_LIFETIME);
+}
 ```
 
 ## License
