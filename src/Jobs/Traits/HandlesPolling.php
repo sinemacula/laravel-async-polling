@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
+use ReflectionClass;
 
 /**
  * The HandlesPolling trait equips Laravel queued jobs with robust polling
